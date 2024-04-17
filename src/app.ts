@@ -21,7 +21,7 @@ async function initialize() {
 
     try {
         app.listen(PORT, () => {
-            console.log(`Servidor rodando em http://localhost:${PORT}`)
+            console.log(`Servidor rodando em http://localhost:${PORT}`);
         })
     } catch (erro: any) {
         throw new Error('Não foi possível iniciar o servidor de API: ' + erro.message)

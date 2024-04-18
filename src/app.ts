@@ -12,6 +12,7 @@ app.get('/api', (req: Request, res: Response) => {
 async function initialize() {
     try {
         await sequelize.authenticate()
+        sequelize.sync({force: false, alter: false});
         console.log('A conexão com o banco de dados foi estabelecida com sucesso')
     } catch (erro: any) {
         throw new Error(

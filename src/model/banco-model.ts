@@ -3,7 +3,7 @@ import sequelize from '../database/sequelize'
 
 export class BancoModel extends Model {
     private _id!: number
-    private _codigo!: string
+    private _numero!: string
     private _nome!: string
 
     get nome(): string {
@@ -14,12 +14,12 @@ export class BancoModel extends Model {
         this._nome = value
     }
 
-    get codigo(): string {
-        return this._codigo
+    get numero(): string {
+        return this._numero
     }
 
-    set codigo(value: string) {
-        this._codigo = value
+    set numero(value: string) {
+        this._numero = value
     }
     get id(): number {
         return this._id
@@ -37,7 +37,7 @@ BancoModel.init(
             autoIncrement: true,
             primaryKey: true,
         },
-        codigo: {
+        numero: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
@@ -53,5 +53,3 @@ BancoModel.init(
         tableName: 'tbl_banco',
     },
 )
-
-BancoModel.sync({ alter: true, force: true })

@@ -51,5 +51,6 @@ BancoModel.init(
         sequelize,
         modelName: 'BancoModel',
         tableName: 'tbl_banco',
+        timestamps: false
     },
-)
+);

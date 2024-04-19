@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 import sequelize from './database/sequelize'
+import { AppRouter } from './router/app-router'
 
 const PORT = 3000
 const app = express()
@@ -8,6 +9,9 @@ app.use(express.json())
 app.get('/api', (req: Request, res: Response) => {
     res.send('Bem vindo a API bancária')
 })
+
+const appRouter = new AppRouter(app);
+appRouter.carregarRotas();
 
 async function initialize() {
     try {

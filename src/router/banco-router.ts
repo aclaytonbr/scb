@@ -18,6 +18,21 @@ export class BancoRouter {
             this._bancoController.criar(req, res);
         })
 
+        // url: /api/banco/listar
+        this._router.get('/listar', (req, res) => {
+            this._bancoController.listar(req, res);
+        })
+
+        // url: /api/banco/buscar/:id
+        this._router.get('/buscar/:id', (req, res) => {
+            this._bancoController.buscar(req, res);
+        })
+
+        // url: /api/banco/alterar?id=<valor>
+        this._router.put('/alterar', (req, res) => {
+            this._bancoController.alterar(req, res);
+        })
+
     }
 
     get router(): Router {

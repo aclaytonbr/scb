@@ -5,4 +5,4 @@ CREATE TABLE `tbl_usuario` (
   `password` varchar(15) NOT NULL DEFAULT (_utf8mb4'banco1234') COMMENT 'senha do usuário para acessar o sistema',
   PRIMARY KEY (`id`),
   UNIQUE KEY `tbl_usuario_UN` (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Define as pessoas que poderão utilizar o sistema';
+)

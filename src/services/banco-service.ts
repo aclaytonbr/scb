@@ -51,4 +51,18 @@ export class BancoService {
         }
     }
 
+    public async delete(id: number) {
+        try {
+            const banco : BancoModel = await this.buscar(id);
+            if (banco) {
+                banco.destroy();
+            } else {
+                throw new Error('Banco não encontrado');
+            }
+        } catch (erro: any) {
+            throw new Error(erro.message);
+        }
+    }
+
+
 }

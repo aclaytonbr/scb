@@ -77,4 +77,22 @@ export class BancoController {
 
     }
 
+    public async delete(req: Request, res: Response) {
+
+        if (!req.params.id) {
+            res.status(400).json({ message: 'Parâmetro de busca não encontrado'});
+            return
+        }
+
+        const pk: number = parseInt(<string>req.params.id);
+        
+        try {
+            await this.bancoService.delete(pk);
+            res.status(200).json({ message: 'Banco excluído com sucesso'});
+        } catch (erro: any) {
+            res.status(500).json({ message: erro.message});
+        }
+
+    }
+
 }

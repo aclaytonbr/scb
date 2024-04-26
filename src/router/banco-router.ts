@@ -33,6 +33,11 @@ export class BancoRouter {
             this._bancoController.alterar(req, res);
         })
 
+        // url: /api/banco/excluir/:id
+        this._router.delete('/excluir/:id', (req, res) => {
+            this._bancoController.alterar(req, res);
+        })
+
     }
 
     get router(): Router {

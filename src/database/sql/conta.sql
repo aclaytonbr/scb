@@ -10,5 +10,7 @@ CREATE TABLE `tbl_conta` (
   `saldo` decimal(10,0) DEFAULT '0',
   `limite_especial` decimal(10,0) DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `tbl_conta_UN` (`numero`)
-)
+  UNIQUE KEY `tbl_conta_UN` (`numero`),
+  KEY `tbl_conta_FK` (`id_agencia`),
+  CONSTRAINT `tbl_conta_FK` FOREIGN KEY (`id_agencia`) REFERENCES `tbl_agencia` (`id`)
+);

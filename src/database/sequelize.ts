@@ -8,6 +8,9 @@ const HOST = 'localhost'
 const sequelize = new Sequelize(DATABASE_NAME, USER_NAME, PASSWORD, {
     host: HOST,
     dialect: 'mysql',
+    dialectOptions: {
+        decimalNumbers: true
+    }
 })
 
 export default sequelize

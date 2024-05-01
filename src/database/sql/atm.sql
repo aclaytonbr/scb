@@ -5,4 +5,4 @@ CREATE TABLE `tbl_atm` (
   `ativo` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `tbl_atm_UN` (`codigo`)
-)
+);

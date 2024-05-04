@@ -1,10 +1,16 @@
 import { IBanco } from "../interface/banco-intreface";
 import { BancoModel } from "../model/banco-model";
+import { CredenciamentoService } from "./credenciamento-service";
 
 
 
 export class BancoService {
-    constructor(){}
+    
+    private credenciamentoService: CredenciamentoService;
+
+    constructor(){
+        this.credenciamentoService = new CredenciamentoService();
+    }
 
 
     public async criar(novo_item: IBanco) {
@@ -64,5 +70,28 @@ export class BancoService {
         }
     }
 
+//operaçoes de credenciamento
+    public async criarCredenciamento(idBanco: number, idAtm: number) {
+        try {
+            await this.credenciamentoService.criar(idBanco,idAtm);
+        } catch (erro: any) {
+            throw new Error(erro.message);
+        }
+    }
 
+    public async excluirCredenciamento(idBanco: number, idAtm: number) {
+        try {
+            await this.credenciamentoService.excluir(idBanco, idAtm);
+        } catch (erro: any) {
+            throw Error(erro.message);
+        }
+    }
+
+    public async listarCredenciamento() {
+        try {
+            return await this.credenciamentoService.listar();
+        } catch (erro: any) {
+            throw new Error(erro.message);
+        }
+    }
 }

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import { BancoService } from "../services/banco-service";
 import { BancoModel } from '../model/banco-model';
+import { ICredenciamento } from '../interface/credenciamento-interface';
 
 
 
@@ -93,6 +94,24 @@ export class BancoController {
             res.status(500).json({ message: erro.message});
         }
 
+    }
+
+//operações de credenciamento
+
+    public async criarCredenciamento(req: Request, res: Response) {
+        if (Object.keys(req.body).length === 0) {
+            res.status(400).json({ message: 'O corpo da requisição está vazio'});
+            return;
+        }
+
+        const icred: ICredenciamento = req.body;
+
+        try {
+            await this.bancoService.criarCredenciamento(icred.id_banco, icred.id_atm);
+            res.status(201).json({ message: 'Banco criado com sucesso' });
+        } catch (erro: any) {
+            res.status(500).json({ message: erro.message});
+        }
     }
 
 }

@@ -38,6 +38,11 @@ export class BancoRouter {
             this._bancoController.alterar(req, res);
         })
 
+        // url: /api/banco/criarcred
+        this._router.delete('/criarcred', (req, res) => {
+            this._bancoController.criarCredenciamento(req, res);
+        })
+
     }
 
     get router(): Router {

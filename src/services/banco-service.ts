@@ -6,6 +6,7 @@ import { CredenciamentoService } from "./credenciamento-service";
 
 export class BancoService {
     
+    //propriedades
     private credenciamentoService: CredenciamentoService;
 
     constructor(){

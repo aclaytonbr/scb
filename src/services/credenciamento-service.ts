@@ -45,5 +45,13 @@ export class CredenciamentoService {
         }
     }
 
+    public async listar() {
+        try {
+            const credenciamentos = await CredenciamentoModel.findAll();
+            return credenciamentos;
+        } catch (erro: any) {
+            throw new Error(erro.message);
+        }
+    }
 
 }

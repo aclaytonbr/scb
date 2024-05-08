@@ -101,10 +101,11 @@ function preencherTabela(data) {
   tbody.innerHTML = '';
 
   // Itera sobre os dados e os insere na tabela
-  data.forEach(agencia => {
+  
+  data.forEach(function(agencia) {
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td>${agencia.codigo}</td>
+      <td>${agencia.numero}</td>
       <td>${agencia.nome}</td>
       <td>${agencia.endereco}</td>
     `;

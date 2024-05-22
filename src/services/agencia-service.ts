@@ -93,4 +93,40 @@ export class AgenciaService {
         }
     }
 
+    private validarCPF(cpf: string): boolean {
+        // Verifica se o CPF tem 11 caracteres e se são todos dígitos
+        if (!/^\d{11}$/.test(cpf)) {
+          return false;
+        }
+      
+        // Converte a string em um array de números
+        const cpfArray = cpf.split('').map(digito => parseInt(digito, 10));
+      
+        // Verifica se todos os dígitos são iguais, caso contrário, o CPF é inválido
+        if (cpfArray.every(digito => digito === cpfArray[0])) {
+          return false;
+        }
+      
+        // Função auxiliar para calcular um dígito verificador
+        function calcularDigito(baseArray: number[]): number {
+          const soma = baseArray.reduce((acc, digito, index) => acc + digito * (baseArray.length + 1 - index), 0);
+          const resto = soma % 11;
+          return resto < 2 ? 0 : 11 - resto;
+        }
+      
+        // Calcula o primeiro dígito verificador
+        const primeiroDigitoVerificador = calcularDigito(cpfArray.slice(0, 9));
+        if (primeiroDigitoVerificador !== cpfArray[9]) {
+          return false;
+        }
+      
+        // Calcula o segundo dígito verificador
+        const segundoDigitoVerificador = calcularDigito(cpfArray.slice(0, 10));
+        if (segundoDigitoVerificador !== cpfArray[10]) {
+          return false;
+        }    
+        // CPF é válido
+        return true;
+      }
+
 }

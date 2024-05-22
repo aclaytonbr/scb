@@ -23,7 +23,7 @@ appRouter.carregarRotas();
 
 async function initialize() {
     try {
-        await sequelize.authenticate()
+        sequelize.authenticate();
         sequelize.sync({force: false, alter: false});
         console.log('A conexão com o banco de dados foi estabelecida com sucesso')
     } catch (erro: any) {

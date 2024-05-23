@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express'
 import sequelize from './database/sequelize'
 import { AppRouter } from './router/app-router'
 
-const PORT = 3000
 const app = express()
 
 // Middleware para definir o cabeçalho Content-Type em todas as respostas
@@ -24,7 +23,7 @@ appRouter.carregarRotas();
 async function initialize() {
     try {
         sequelize.authenticate();
-        sequelize.sync({force: false, alter: false});
+        sequelize.sync({force: false, alter: false, logging: false});
         console.log('A conexão com o banco de dados foi estabelecida com sucesso')
     } catch (erro: any) {
         throw new Error(
@@ -32,6 +31,7 @@ async function initialize() {
         )
     }
 
+    const PORT = process.env.PORT;
     try {
         app.listen(PORT, () => {
             console.log(`Servidor rodando em http://localhost:${PORT}`);

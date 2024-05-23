@@ -8,10 +8,10 @@ const envPath = path.join(__dirname, '../..', '.env');
 dotenv.config({path: envPath});
 const objEnv: dotenv.DotenvParseOutput = dotenv.parse(fs.readFileSync(envPath));
 
-const DATABASE_NAME = objEnv.DATABASE_NAME;
-const USER_NAME = objEnv.USER_NAME;
-const PASSWORD = objEnv.PASSWORD;
-const HOST = objEnv.HOST;
+const DATABASE_NAME = objEnv.DATABASE_NAME ? objEnv.DATABASE_NAME : 'database';
+const USER_NAME = objEnv.USER_NAME ? objEnv.USER_NAME : 'username';
+const PASSWORD = objEnv.PASSWORD ? objEnv.PASSWORD : 'password';
+const HOST = objEnv.HOST ? objEnv.HOST : 'host';
 
 const sequelize = new Sequelize(
     DATABASE_NAME, 

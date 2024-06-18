@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 //carrega as variáveis de ambiente
-const envPath = path.join(__dirname, '../..', '.env');
+const envPath = path.join(__dirname, '../../../', '.env');
 dotenv.config({path: envPath});
 const objEnv: dotenv.DotenvParseOutput = dotenv.parse(fs.readFileSync(envPath));
 
@@ -16,11 +16,11 @@ const HOST = objEnv.HOST ? objEnv.HOST : 'host';
 const sequelize = new Sequelize(
     DATABASE_NAME, 
     USER_NAME, 
-    PASSWORD, {
+    '', {
     host: HOST,
     dialect: 'mysql',
     dialectOptions: {
-        decimalNumbers: true
+        decimalNumbers: true,
     }
 });
 
